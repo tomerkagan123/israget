@@ -32,7 +32,20 @@ SignUpRequest JsonRequestPacketDeserializer::deserializeSignUpRequest(std::strin
     return request;
 }
 
-GetPlayersInRoomRequest JsonRequestPacketDeserializer::deserializeGetPlayersInRoomRequest(std::string buffer)
+UploadItemRequest JsonRequestPacketDeserializer::deserializeUploadItemRequest(std::string buffer)
+{
+    UploadItemRequest request;
+    buffer.erase(0, 5);
+    json jsonParse = json::parse(buffer);
+
+    request.itemName = jsonParse.value("item_name", "NULL");
+    request.description = jsonParse.value("description", "NULL");
+    request.price = stoi(jsonParse.value("price", "NULL"));
+
+    return request;
+}
+
+/*GetPlayersInRoomRequest JsonRequestPacketDeserializer::deserializeGetPlayersInRoomRequest(std::string buffer)
 {
     GetPlayersInRoomRequest request;
     buffer.erase(0, 5); //removes the 5 bytes of the message, code + message length
@@ -66,4 +79,4 @@ JoinRoomRequest JsonRequestPacketDeserializer::deserializeJoinRoomRequest(std::s
     request.roomId = jsonParse.value("roomId", 0);
 
     return request;
-}
+}*/

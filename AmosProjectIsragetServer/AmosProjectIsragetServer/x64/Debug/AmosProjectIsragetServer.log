@@ -1,33 +1,5 @@
-﻿  Communicator.cpp
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\Communicator.cpp(119,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\Communicator.cpp(127,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\Communicator.cpp(138,9): warning C4834: discarding return value of function with 'nodiscard' attribute
-  functions.cpp
-  Helper.cpp
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\Helper.cpp(27,73): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\Helper.cpp(28,72): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\Helper.cpp(29,67): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\Helper.cpp(71,5): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  IDatabase.cpp
-  IRequestHandler.cpp
-  JsonRequestPacketDeserializer.cpp
-  JsonResponsePacketSerializer.cpp
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\JsonResponsePacketSerializer.cpp(45,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\JsonResponsePacketSerializer.cpp(64,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\JsonResponsePacketSerializer.cpp(80,31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\JsonResponsePacketSerializer.cpp(103,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  LoggedUser.cpp
-  LoginManager.cpp
-  LoginRequestHandler.cpp
-  main.cpp
-  MenuRequestHandler.cpp
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\MenuRequestHandler.cpp(36,32): warning C4101: 'jsonDeserialize': unreferenced local variable
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\MenuRequestHandler.cpp(50,32): warning C4101: 'jsonDeserialize': unreferenced local variable
-  RequestHandlerFactory.cpp
-  Server.cpp
-  SqliteDatabase.cpp
-  User.cpp
-  WSAInitializer.cpp
-  Generating Code...
-  sqlite3.c
+﻿  MenuRequestHandler.cpp
+C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\MenuRequestHandler.cpp(37,32): warning C4101: 'jsonDeserialize': unreferenced local variable
+C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\MenuRequestHandler.cpp(64,32): warning C4101: 'jsonDeserialize': unreferenced local variable
+C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\MenuRequestHandler.cpp(83,32): warning C4101: 'jsonDeserialize': unreferenced local variable
   AmosProjectIsragetServer.vcxproj -> C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\x64\Debug\AmosProjectIsragetServer.exe

@@ -63,6 +63,16 @@ void SqliteDatabase::addNewUser(std::string name, std::string password, std::str
 		std::cerr << "Error." << std::endl;
 }
 
+std::list<Item> SqliteDatabase::getItems()
+{
+	std::string sqlStatement = "SELECT * FROM ITEMS;";
+	std::list<Item> list;
+	int res = sqlite3_exec(this->m_db, sqlStatement.c_str(), callbackGetItems, &list, nullptr);
+	if (res != SQLITE_OK)
+		std::cerr << "Error." << std::endl;
+	return list;
+}
+
 /*
 * Constructor
 */

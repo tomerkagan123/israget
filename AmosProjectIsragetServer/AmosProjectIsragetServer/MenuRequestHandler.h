@@ -14,4 +14,7 @@ private:
 	LoggedUser m_user;
 	RequestHandlerFactory* m_handlerFactory;
 	RequestResult signout(RequestInfo requestInfo);
+	RequestResult getItems(RequestInfo requestInfo);
+	RequestResult getItemInfo(RequestInfo requestInfo);
+	RequestResult uploadItem(RequestInfo requestInfo);
 };

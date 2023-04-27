@@ -7,7 +7,8 @@
 //'S' - SIGN UP
 //'E' - ERROR
 //'O' - LOGOUT
-//'R' - GET ITEMS WITH..
+//'R' - GET ALL ITEMS
+//'F' - GET ITEMS THAT CONTAIN:
 //'P' - GET STATS ABOUT ITEM - ITEM_NAME, USER_ID, DATE, DESCRIPTION, IMAGE
 //'U' - UPLOAD ITEM
 //'X' - DELETE ITEM
@@ -40,6 +41,19 @@ RequestResult MenuRequestHandler::handleRequest(RequestInfo requestInfo)
 	{
 		result = this->signout(requestInfo);
 	}
+	else if (requestInfo.requestId == (int)'R')
+	{
+		result = this->getItems(requestInfo);
+	}
+	else if (requestInfo.requestId == (int)'P')
+	{
+		result = this->getItemInfo(requestInfo);
+	}
+	else if (requestInfo.requestId == (int)'U')
+	{
+		result = this->uploadItem(requestInfo);
+	}
+
 	return result;
 }
 
@@ -60,4 +74,35 @@ RequestResult MenuRequestHandler::signout(RequestInfo requestInfo)
 		result.newHandler = this; //stays at the current page
 	}
 	return result;
+}
+
+RequestResult MenuRequestHandler::getItems(RequestInfo requestInfo)
+{
+	RequestResult result;
+	SqliteDatabase db;
+	JsonRequestPacketDeserializer jsonDeserialize;
+	std::list<Item> itlist = db.getItems();
+	result.response = "Items";
+	int i = 0;
+	for (auto item : itlist)
+	{
+		result.response = result.response + ';' + item.user_name + ':' + item.item_name + ':' + item.description + ':' + std::to_string(item.price) + ':' + item.email;
+		if (i < itlist.size() - 1)
+		{
+			result.response = result.response + ',';
+		}
+		i++;
+	}
+	result.newHandler = this;
+	return result;
+}
+
+RequestResult MenuRequestHandler::getItemInfo(RequestInfo requestInfo)
+{
+	return RequestResult();
+}
+
+RequestResult MenuRequestHandler::uploadItem(RequestInfo requestInfo)
+{
+	return RequestResult();
 }
