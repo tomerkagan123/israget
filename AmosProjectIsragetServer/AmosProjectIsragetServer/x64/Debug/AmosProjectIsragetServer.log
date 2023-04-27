@@ -1,0 +1,15 @@
+﻿  Communicator.cpp
+C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsragetServer\AmosProjectIsragetServer\Communicator.cpp(119,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsragetServer\AmosProjectIsragetServer\Communicator.cpp(127,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsragetServer\AmosProjectIsragetServer\Communicator.cpp(138,9): warning C4834: discarding return value of function with 'nodiscard' attribute
+  LoggedUser.cpp
+  LoginManager.cpp
+  LoginRequestHandler.cpp
+  main.cpp
+  MenuRequestHandler.cpp
+C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsragetServer\AmosProjectIsragetServer\MenuRequestHandler.cpp(36,32): warning C4101: 'jsonDeserialize': unreferenced local variable
+C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsragetServer\AmosProjectIsragetServer\MenuRequestHandler.cpp(50,32): warning C4101: 'jsonDeserialize': unreferenced local variable
+  RequestHandlerFactory.cpp
+  Server.cpp
+  Generating Code...
+  AmosProjectIsragetServer.vcxproj -> C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsragetServer\x64\Debug\AmosProjectIsragetServer.exe
