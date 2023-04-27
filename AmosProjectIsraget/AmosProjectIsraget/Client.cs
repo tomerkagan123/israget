@@ -19,6 +19,7 @@ namespace AmosProjectIsraget
         public static String msgConverted = "";
         public static byte[] data = new byte[1024];
         public static string username;
+        public static Item[] arrayOfItemsArray;
 
         public static string BuildMessage(string msg, string type)
         {

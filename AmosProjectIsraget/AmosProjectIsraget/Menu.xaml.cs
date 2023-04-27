@@ -38,7 +38,7 @@ namespace AmosProjectIsraget
         }
         private void Browse(object sender, RoutedEventArgs e)
         {
-            MainWindow win = new MainWindow();
+            Browse win = new Browse();
             Visibility = Visibility.Hidden;
             win.Show();
         }

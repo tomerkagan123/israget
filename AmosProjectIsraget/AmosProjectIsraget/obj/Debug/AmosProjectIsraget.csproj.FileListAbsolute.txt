@@ -20,3 +20,5 @@ C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsraget\AmosProjectIsraget\obj
 C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\AmosProjectIsraget.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\AmosProjectIsraget.exe
 C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\AmosProjectIsraget.pdb
+C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\Browse.g.cs
+C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\Browse.baml
