@@ -1,0 +1,28 @@
+﻿<Window x:Class="AmosProjectIsraget.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AmosProjectIsraget"
+        mc:Ignorable="d"
+        Title="מסך התחברות" Height="250" Width="400"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Label Name ="usernameLabel" Content="Username:" Margin="11,46,35,0"/>
+        <Label Name ="passwordLabel" Content="Password:" Margin="11,99,35,-53"/>
+        <Button  Name="cancel" Height="30" 
+                 Content="Cancel" Margin="223,166,47,0" VerticalAlignment="Top" Click="CloseProgram"/>
+        <Button  Name="login" 
+                 Content="Login" RenderTransformOrigin="-0.344,2.371" Margin="42,166,228,0" Height="30" VerticalAlignment="Top" Click="LoginUser"/>
+        <TextBox Name="username" Margin="107,46,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <PasswordBox Name="password" Margin="107,99,0,0" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200"/>
+        <Button Name="signup"
+                Content="New User?" Height="35" Width="200" Margin="88,205,112,10"
+                Click="SignupPage"/>
+    </Grid>
+
+</Window>
+    
