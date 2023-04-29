@@ -47,6 +47,14 @@ namespace AmosProjectIsraget
             Visibility = Visibility.Hidden;
             win.Show();
         }
+        private void Upload(object sender, RoutedEventArgs e)
+        {
+            Upload win = new Upload();
+            win.Top = this.Top;
+            win.Left = this.Left;
+            Visibility = Visibility.Hidden;
+            win.Show();
+        }
         private void Refresh()
         {
             itembox.Items.Clear();
@@ -59,7 +67,7 @@ namespace AmosProjectIsraget
             String[] arrItems = recv.Split(',');
             String[][] arrItemsarr = new string[freq][];
             Client.arrayOfItemsArray = new Item[freq];
-            MessageBox.Show(recv);
+            //MessageBox.Show(recv);
             for (int i = 0; i < freq; i++)
             {
                 Item item = new Item();
@@ -67,7 +75,7 @@ namespace AmosProjectIsraget
                 item.user_name = arrItemsarr[i][0];
                 item.item_name = arrItemsarr[i][1];
                 item.description = arrItemsarr[i][2];
-                item.price = Int32.Parse(arrItemsarr[i][3]);
+                item.price = arrItemsarr[i][3];
                 item.email = arrItemsarr[i][4];
                 Client.arrayOfItemsArray[i] = item;
             }
@@ -100,11 +108,11 @@ namespace AmosProjectIsraget
                     currItem = item;
                 }
             }
-            /*ItemWindow window = new ItemWindow(currItem);
+            ItemWindow window = new ItemWindow(currItem);
             window.Top = this.Top;
             window.Left = this.Left;
             Visibility = Visibility.Hidden;
-            window.Show();*/
+            window.Show();
         }
 
 

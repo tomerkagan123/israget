@@ -40,7 +40,7 @@ int callbackGetItems(void* data, int argc, char** argv, char** azColName)
 	std::string item_name;
 	std::string email;
 	std::string description;
-	unsigned int price = 0;
+	std::string price;
 	for (int i = 0; i < argc; i++)
 	{
 		if ((std::string)azColName[i] == "email")
@@ -57,7 +57,7 @@ int callbackGetItems(void* data, int argc, char** argv, char** azColName)
 		}
 		else if ((std::string)azColName[i] == "price")
 		{
-			price = std::stoi(argv[i]);
+			price = argv[i];
 		}
 		else if ((std::string)azColName[i] == "item_name")
 		{

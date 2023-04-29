@@ -44,5 +44,13 @@ namespace AmosProjectIsraget
             Visibility = Visibility.Hidden;
             win.Show();
         }
+        private void Upload(object sender, RoutedEventArgs e)
+        {
+            Upload win = new Upload();
+            win.Top = this.Top;
+            win.Left = this.Left;
+            Visibility = Visibility.Hidden;
+            win.Show();
+        }
     }
 }

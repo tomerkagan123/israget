@@ -63,6 +63,14 @@ void SqliteDatabase::addNewUser(std::string name, std::string password, std::str
 		std::cerr << "Error." << std::endl;
 }
 
+void SqliteDatabase::uploadItem(std::string userName, std::string itemName, std::string description, std::string price, std::string email)
+{
+	std::string sqlStatement = "INSERT INTO ITEMS VALUES('" + userName + "','" + itemName + "','" + description + "','" + price + "','" + email + "'); ";
+	int res = sqlite3_exec(this->m_db, sqlStatement.c_str(), nullptr, nullptr, nullptr);
+	if (res != SQLITE_OK)
+		std::cerr << "Error." << std::endl;
+}
+
 std::list<Item> SqliteDatabase::getItems()
 {
 	std::string sqlStatement = "SELECT * FROM ITEMS;";

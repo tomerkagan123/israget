@@ -10,7 +10,7 @@
 //'R' - GET ALL ITEMS
 //'F' - GET ITEMS THAT CONTAIN:
 //'P' - GET STATS ABOUT ITEM - ITEM_NAME, USER_ID, DATE, DESCRIPTION, IMAGE
-//'U' - UPLOAD ITEM
+//'C' - UPLOAD ITEM
 //'X' - DELETE ITEM
 
 using json = nlohmann::json;
@@ -49,7 +49,7 @@ RequestResult MenuRequestHandler::handleRequest(RequestInfo requestInfo)
 	{
 		result = this->getItemInfo(requestInfo);
 	}
-	else if (requestInfo.requestId == (int)'U')
+	else if (requestInfo.requestId == (int)'C')
 	{
 		result = this->uploadItem(requestInfo);
 	}
@@ -86,7 +86,7 @@ RequestResult MenuRequestHandler::getItems(RequestInfo requestInfo)
 	int i = 0;
 	for (auto item : itlist)
 	{
-		result.response = result.response + ';' + item.user_name + ':' + item.item_name + ':' + item.description + ':' + std::to_string(item.price) + ':' + item.email;
+		result.response = result.response + ';' + item.user_name + ':' + item.item_name + ':' + item.description + ':' + item.price + ':' + item.email;
 		if (i < itlist.size() - 1)
 		{
 			result.response = result.response + ',';
@@ -104,5 +104,14 @@ RequestResult MenuRequestHandler::getItemInfo(RequestInfo requestInfo)
 
 RequestResult MenuRequestHandler::uploadItem(RequestInfo requestInfo)
 {
-	return RequestResult();
+	SqliteDatabase db;
+	std::string stringBuffer(requestInfo.buffer.begin(), requestInfo.buffer.end()); //converts char buffer to std::string
+	JsonRequestPacketDeserializer jsonDeserialize;
+	UploadItemRequest request = jsonDeserialize.deserializeUploadItemRequest(stringBuffer);
+	//std::list<Item> itlist = db.getItems(); Dont think im supposed to do checks here.
+	db.uploadItem(request.userName, request.itemName, request.description, request.price, request.email);
+	RequestResult result;
+	result.response = "Success!";
+	result.newHandler = this;
+	return result;
 }

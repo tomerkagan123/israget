@@ -12,9 +12,11 @@ struct SignUpRequest {
 	std::string email;
 };
 struct UploadItemRequest {
+	std::string userName;
 	std::string itemName;
 	std::string description;
-	int price;
+	std::string price;
+	std::string email;
 };
 class JsonRequestPacketDeserializer {
 public:

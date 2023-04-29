@@ -22,3 +22,7 @@ C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsraget\AmosProjectIsraget\obj
 C:\Users\User\Desktop\GIT HERE\Israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\AmosProjectIsraget.pdb
 C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\Browse.g.cs
 C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\Browse.baml
+C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\Upload.g.cs
+C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\Upload.baml
+C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\ItemWindow.g.cs
+C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsraget\AmosProjectIsraget\obj\Debug\ItemWindow.baml

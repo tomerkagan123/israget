@@ -46,7 +46,8 @@
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Click="Upload"/>
                 <RadioButton Content="About"
                              Height="50"
                              Foreground="White"

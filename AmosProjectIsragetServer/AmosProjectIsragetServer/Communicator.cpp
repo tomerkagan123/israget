@@ -95,7 +95,10 @@ void Communicator::handleNewClient(SOCKET sock)
 			}
 			reqInfo.buffer = buffer;
 			for (char i : reqInfo.buffer)
+			{
+
 				std::cout << i;
+			}
 			std::cout << std::endl;
 			bool isRelevant;
 			lock.lock();
@@ -125,6 +128,13 @@ void Communicator::handleNewClient(SOCKET sock)
 				reqResult = it->second->handleRequest(reqInfo);
 				std::cout << reqResult.response << std::endl;
 				send(sock, reqResult.response.c_str(), reqResult.response.size(), 0);
+			}
+			else
+			{
+				if (flagFirstTime) //if logged in, sign out before disconnecting.
+					reqResult.newHandler->handleRequest(reqInfo);
+				lock.unlock();
+				break;
 			}
 			lock.unlock();
 			reqInfo.buffer.clear();

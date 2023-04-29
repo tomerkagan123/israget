@@ -34,14 +34,15 @@ SignUpRequest JsonRequestPacketDeserializer::deserializeSignUpRequest(std::strin
 
 UploadItemRequest JsonRequestPacketDeserializer::deserializeUploadItemRequest(std::string buffer)
 {
-    UploadItemRequest request;
     buffer.erase(0, 5);
+    std::cout << buffer << std::endl;
     json jsonParse = json::parse(buffer);
-
-    request.itemName = jsonParse.value("item_name", "NULL");
+    UploadItemRequest request;
+    request.userName = jsonParse.value("userName", "NULL");
+    request.itemName = jsonParse.value("itemName", "NULL");
     request.description = jsonParse.value("description", "NULL");
-    request.price = stoi(jsonParse.value("price", "NULL"));
-
+    request.price = jsonParse.value("price", "NULL");
+    request.email = jsonParse.value("email", "NULL");
     return request;
 }
 
