@@ -58,5 +58,13 @@ namespace AmosProjectIsraget
             Visibility = Visibility.Hidden;
             win.Show();
         }
+        private void Menu(object sender, RoutedEventArgs e)
+        {
+            Menu win = new Menu();
+            win.Top = this.Top;
+            win.Left = this.Left;
+            Visibility = Visibility.Hidden;
+            win.Show();
+        }
     }
 }
