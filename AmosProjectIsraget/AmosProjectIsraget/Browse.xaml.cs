@@ -100,7 +100,6 @@ namespace AmosProjectIsraget
         }
         private void Refresh()
         {
-            itembox.Items.Clear();
             string messageToSend = Client.BuildMessage(" ", "R");
             Client.SendMsgToServer(messageToSend);
             string recv = Client.ReceiveMsgFromServer();
@@ -122,6 +121,7 @@ namespace AmosProjectIsraget
                 item.email = arrItemsarr[i][4];
                 Client.arrayOfItemsArray[i] = item;
             }
+            itembox.Items.Clear();
             for (int i = 0; i < freq; i++)
             {
                 Button button = new Button();
@@ -148,7 +148,6 @@ namespace AmosProjectIsraget
                 timer = null;
                 first = true;
             }
-            itembox.Items.Clear();
             string message = "{\"name\":\"%" + param.Text + "%\"}";
             string messageToSend = Client.BuildMessage(message, "F");
             Client.SendMsgToServer(messageToSend);
@@ -171,6 +170,7 @@ namespace AmosProjectIsraget
                 item.email = arrItemsarr[i][4];
                 Client.arrayOfItemsArray[i] = item;
             }
+            itembox.Items.Clear();
             for (int i = 0; i < freq; i++)
             {
                 Button button = new Button();
