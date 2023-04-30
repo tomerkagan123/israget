@@ -49,7 +49,7 @@ namespace AmosProjectIsraget
             Client.SendMsgToServer(messageToSend);
             string recv = Client.ReceiveMsgFromServer();
             MessageBox.Show("Successfully Deleted " + itemname.Text);
-            Browse(this, null)
+            Browse(this, null);
         }
         void timer_Tick(object sender, EventArgs e)
         {
