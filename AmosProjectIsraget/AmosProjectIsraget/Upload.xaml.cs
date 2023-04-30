@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace AmosProjectIsraget
 {
@@ -19,9 +20,18 @@ namespace AmosProjectIsraget
     /// </summary>
     public partial class Upload : Window
     {
+        DispatcherTimer LiveTime = new DispatcherTimer();
         public Upload()
         {
             InitializeComponent();
+            LiveTimeLabel.Content = DateTime.Now.ToString("HH:mm");
+            LiveTime.Interval = TimeSpan.FromSeconds(1);
+            LiveTime.Tick += timer_Tick;
+            LiveTime.Start();
+        }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            LiveTimeLabel.Content = DateTime.Now.ToString("HH:mm");
         }
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
@@ -32,25 +42,35 @@ namespace AmosProjectIsraget
         }
         private void CloseProgram(object sender, RoutedEventArgs e)
         {
+            LiveTime.Stop();
+            LiveTime.Tick -= timer_Tick;
             Client.SendMsgToServer("D");
             Client.socket.Close();
             System.Environment.Exit(0);
         }
         private void Browse(object sender, RoutedEventArgs e)
         {
+            LiveTime.Stop();
+            LiveTime.Tick -= timer_Tick;
+            LiveTime = null;
             Browse win = new Browse();
             win.Top = this.Top;
             win.Left = this.Left;
             Visibility = Visibility.Hidden;
             win.Show();
+            this.Close();
         }
         private void Menu(object sender, RoutedEventArgs e)
         {
+            LiveTime.Stop();
+            LiveTime.Tick -= timer_Tick;
+            LiveTime = null;
             Menu win = new Menu();
             win.Top = this.Top;
             win.Left = this.Left;
             Visibility = Visibility.Hidden;
             win.Show();
+            this.Close();
         }
         private void CreateItem(object sender, RoutedEventArgs e)
         {
@@ -59,7 +79,7 @@ namespace AmosProjectIsraget
             item.price = price.Text;
             item.description = description.Text;
             item.item_name = itemname.Text;
-            item.user_name = name.Text;
+            item.user_name = Client.username;
             if (item.description == string.Empty)
             {
                 MessageBox.Show("Don't even try...");

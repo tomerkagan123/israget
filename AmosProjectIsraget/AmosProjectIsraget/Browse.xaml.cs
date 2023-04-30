@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace AmosProjectIsraget
 {
@@ -20,10 +23,30 @@ namespace AmosProjectIsraget
     public partial class Browse : Window
     {
         private Dictionary<int, string> allItems = new Dictionary<int, string>();
+        DispatcherTimer timer = new DispatcherTimer();
+        DispatcherTimer LiveTime = new DispatcherTimer();
+
         public Browse()
         {
             InitializeComponent();
+            LiveTimeLabel.Content = DateTime.Now.ToString("HH:mm");
             Refresh();
+            LiveTime.Interval = TimeSpan.FromSeconds(1);
+            LiveTime.Tick += timer_Tick;
+            LiveTime.Start();
+            timer.Tick += new EventHandler(timer1_Tick);
+            timer.Interval = TimeSpan.FromMilliseconds(3000); // in miliseconds
+            timer.Start();
+
+        }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            LiveTimeLabel.Content = DateTime.Now.ToString("HH:mm");
+        }
+        void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Visibility != Visibility.Hidden)
+                Refresh();
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -36,24 +59,44 @@ namespace AmosProjectIsraget
         private void CloseProgram(object sender, RoutedEventArgs e)
         {
             Client.SendMsgToServer("D");
+            LiveTime.Stop();
+            LiveTime.Tick -= timer_Tick;
+            timer.Stop();
+            timer.Tick -= timer1_Tick;
+            LiveTime = null;
+            timer = null;
             Client.socket.Close();
             System.Environment.Exit(0);
         }
         private void Menu(object sender, RoutedEventArgs e)
         {
+            LiveTime.Stop();
+            LiveTime.Tick -= timer_Tick;
+            timer.Stop();
+            timer.Tick -= timer1_Tick;
+            LiveTime = null;
+            timer = null;
             Menu win = new Menu();
             win.Top = this.Top;
             win.Left = this.Left;
             Visibility = Visibility.Hidden;
             win.Show();
+            this.Close();
         }
         private void Upload(object sender, RoutedEventArgs e)
         {
+            LiveTime.Stop();
+            LiveTime.Tick -= timer_Tick;
+            timer.Stop();
+            timer.Tick -= timer1_Tick;
+            LiveTime = null;
+            timer = null;
             Upload win = new Upload();
             win.Top = this.Top;
             win.Left = this.Left;
             Visibility = Visibility.Hidden;
             win.Show();
+            this.Close();
         }
         private void Refresh()
         {
@@ -108,11 +151,18 @@ namespace AmosProjectIsraget
                     currItem = item;
                 }
             }
+            LiveTime.Stop();
+            LiveTime.Tick -= timer_Tick;
+            timer.Stop();
+            timer.Tick -= timer1_Tick;
+            LiveTime = null;
+            timer = null;
             ItemWindow window = new ItemWindow(currItem);
             window.Top = this.Top;
             window.Left = this.Left;
             Visibility = Visibility.Hidden;
             window.Show();
+            this.Close();
         }
 
 

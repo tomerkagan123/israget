@@ -59,6 +59,7 @@ namespace AmosProjectIsraget
                 Menu newWindow = new Menu();
                 this.Visibility = Visibility.Hidden;
                 newWindow.Show(); //moves to next screen
+                this.Close();
             }
         }
         private void SignupPage(object sender, RoutedEventArgs e)
@@ -66,6 +67,7 @@ namespace AmosProjectIsraget
             SignupWindow window = new SignupWindow();
             Visibility = Visibility.Hidden;
             window.Show();
+            this.Close();
         }
     }
 }

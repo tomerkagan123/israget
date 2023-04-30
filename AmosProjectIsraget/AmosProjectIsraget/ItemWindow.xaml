@@ -18,11 +18,13 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Label Name="LiveTimeLabel" Content="00:00" Grid.Column="1" Margin="646,16,-112,3"
+                   FontSize="15" FontWeight="Medium" Foreground="White" Height="56" Width="186"/>
             <TextBlock Grid.Column="1" Margin="160,0,360,450" Grid.Row="1"                              
                    Foreground="White"
                    FontSize="40"

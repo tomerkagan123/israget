@@ -52,6 +52,7 @@ namespace AmosProjectIsraget
             Visibility = Visibility.Hidden;
             MainWindow newWindow = new MainWindow();
             newWindow.Show(); //moves to next screen
+            this.Close();
         }
     }
 }

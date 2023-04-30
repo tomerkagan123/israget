@@ -23,6 +23,8 @@
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Label Name="LiveTimeLabel" Content="00:00" Grid.Column="1" Margin="646,16,-112,3"
+                   FontSize="15" FontWeight="Medium" Foreground="White" Height="56" Width="186"/>
             <TextBlock Text="Israget"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"

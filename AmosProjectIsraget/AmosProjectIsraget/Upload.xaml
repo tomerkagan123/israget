@@ -29,11 +29,12 @@
                    Foreground="White"
                    FontSize="22"
                        Margin="20,0,0,0"/>
-            <TextBox Name="itemname" Grid.Column="1" Margin="140,112,380,338" Grid.Row="1"> Item Name </TextBox>
-            <TextBox Name="description" Grid.Column="1" Margin="140,205,380,244" Grid.Row="1"> Description</TextBox>
-            <TextBox Name="name" Grid.Column="1" Margin="140,10,380,439" Grid.Row="1">Your Name</TextBox>
+            <Label Name="LiveTimeLabel" Content="00:00" Grid.Column="1" Margin="646,16,-112,3"
+                   FontSize="15" FontWeight="Medium" Foreground="White" Height="56" Width="186"/>
+            <TextBox Name="itemname" Grid.Column="1" Margin="140,42,380,408" Grid.Row="1"> Item Name </TextBox>
+            <TextBox Name="description" Grid.Column="1" Margin="140,161,380,288" Grid.Row="1">Description</TextBox>
             <TextBox Name="price" Grid.Column="1" Margin="446,149,74,300" Grid.Row="1">Price</TextBox>
-            <TextBox Name="contact" Grid.Column="1" Margin="140,305,380,144" Grid.Row="1">Where to contact you</TextBox>
+            <TextBox Name="contact" Grid.Column="1" Margin="140,281,380,168" Grid.Row="1">Where to contact you</TextBox>
             <Button Name="create" Grid.Column="1" Margin="446,281,74,169" Grid.Row="1" Background="#0F0F2D"
                     Foreground="White"
                     FontSize="30"

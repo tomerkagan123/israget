@@ -97,7 +97,8 @@
                    Foreground="White"
                    FontSize="22"
                    Margin="20,0,0,0"/>
-
+            <Label Name="LiveTimeLabel" Content="00:00" Grid.Column="1" Margin="646,16,-112,3"
+                   FontSize="15" FontWeight="Medium" Foreground="White" Height="56" Width="186"/>
             <StackPanel Name="itemtable" Grid.Row="1" Grid.ColumnSpan="2" Margin="250,0,250,0">
                 <ListBox x:Name="itembox" Height="437" Background="#181735"
                      BorderThickness="0"
