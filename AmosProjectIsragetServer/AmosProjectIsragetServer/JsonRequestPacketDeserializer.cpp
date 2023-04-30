@@ -56,6 +56,18 @@ GetSpecItemRequest JsonRequestPacketDeserializer::deserializeGetSpecItemRequest(
     return request;
 }
 
+DeleteItemRequest JsonRequestPacketDeserializer::deserializeDeleteItemRequest(std::string buffer)
+{
+    buffer.erase(0, 5);
+    std::cout << buffer << std::endl;
+    json jsonParse = json::parse(buffer);
+    DeleteItemRequest request;
+    request.userName = jsonParse.value("user_name", "NULL");
+    request.itemName = jsonParse.value("item_name", "NULL");
+    request.description = jsonParse.value("description", "NULL");
+    return request;
+}
+
 /*GetPlayersInRoomRequest JsonRequestPacketDeserializer::deserializeGetPlayersInRoomRequest(std::string buffer)
 {
     GetPlayersInRoomRequest request;

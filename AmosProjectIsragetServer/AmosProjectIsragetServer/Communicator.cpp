@@ -79,13 +79,13 @@ void Communicator::handleNewClient(SOCKET sock)
 		std::vector<char> buffer;
 		bool flagFirstTime = false;
 		bool flag = false;
-		char msg[513];
+		char msg[1025];
 		std::map<SOCKET, IRequestHandler*>::iterator it = this->m_clients.find(sock);
 		while (true)
 		{
 			int i = 0;
-			recv(sock, msg, 513, 0);
-			msg[512] = 0;
+			recv(sock, msg, 1025, 0);
+			msg[1024] = 0;
 			reqInfo.timeOfRecieve = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 			reqInfo.requestId = msg[0];
 			while (msg[i] != -52 && !flag)

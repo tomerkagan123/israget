@@ -29,13 +29,13 @@ namespace AmosProjectIsraget
         public Browse()
         {
             InitializeComponent();
-            LiveTimeLabel.Content = DateTime.Now.ToString("HH:mm");
             Refresh();
+            LiveTimeLabel.Content = DateTime.Now.ToString("HH:mm");
             LiveTime.Interval = TimeSpan.FromSeconds(1);
             LiveTime.Tick += timer_Tick;
             LiveTime.Start();
             timer.Tick += new EventHandler(timer1_Tick);
-            timer.Interval = TimeSpan.FromMilliseconds(3000); // in miliseconds
+            timer.Interval = TimeSpan.FromMilliseconds(1000); // in miliseconds
             timer.Start();
 
         }
@@ -104,17 +104,17 @@ namespace AmosProjectIsraget
             string messageToSend = Client.BuildMessage(" ", "R");
             Client.SendMsgToServer(messageToSend);
             string recv = Client.ReceiveMsgFromServer();
-            char ch = ';';
+            char ch = '#';
             int freq = recv.Count(x => (x == ch));
-            recv = recv.Replace("Items;", String.Empty).Replace(";", String.Empty);
-            String[] arrItems = recv.Split(',');
+            recv = recv.Replace("Items#", String.Empty).Replace("#", String.Empty);
+            String[] arrItems = recv.Split('~');
             String[][] arrItemsarr = new string[freq][];
             Client.arrayOfItemsArray = new Item[freq];
             //MessageBox.Show(recv);
             for (int i = 0; i < freq; i++)
             {
                 Item item = new Item();
-                arrItemsarr[i] = arrItems[i].Split(':');
+                arrItemsarr[i] = arrItems[i].Split('^');
                 item.user_name = arrItemsarr[i][0];
                 item.item_name = arrItemsarr[i][1];
                 item.description = arrItemsarr[i][2];
@@ -153,17 +153,17 @@ namespace AmosProjectIsraget
             string messageToSend = Client.BuildMessage(message, "F");
             Client.SendMsgToServer(messageToSend);
             string recv = Client.ReceiveMsgFromServer();
-            char ch = ';';
+            char ch = '#';
             int freq = recv.Count(x => (x == ch));
-            recv = recv.Replace("Items;", String.Empty).Replace(";", String.Empty);
-            String[] arrItems = recv.Split(',');
+            recv = recv.Replace("Items#", String.Empty).Replace("#", String.Empty);
+            String[] arrItems = recv.Split('~');
             String[][] arrItemsarr = new string[freq][];
             Client.arrayOfItemsArray = new Item[freq];
             //MessageBox.Show(recv);
             for (int i = 0; i < freq; i++)
             {
                 Item item = new Item();
-                arrItemsarr[i] = arrItems[i].Split(':');
+                arrItemsarr[i] = arrItems[i].Split('^');
                 item.user_name = arrItemsarr[i][0];
                 item.item_name = arrItemsarr[i][1];
                 item.description = arrItemsarr[i][2];

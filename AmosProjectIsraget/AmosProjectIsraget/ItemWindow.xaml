@@ -10,7 +10,30 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True">
-
+    <Window.Resources>
+        <Style x:Key="NoMouseOverButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"   >
+                            <ContentPresenter Margin="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Border Background="#272537"
             CornerRadius="20">
         <Grid>
@@ -18,13 +41,17 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Name="LiveTimeLabel" Content="00:00" Grid.Column="1" Margin="646,16,-112,3"
                    FontSize="15" FontWeight="Medium" Foreground="White" Height="56" Width="186"/>
+            <Button Name="delete" Grid.Column="1" Margin="269,440,251,10" Grid.Row="1" BorderThickness="0"
+                    Style="{StaticResource NoMouseOverButtonStyle}"
+                    Background="#272537"
+                    Foreground="Red"/>
             <TextBlock Grid.Column="1" Margin="25,5,398,445" Grid.Row="1"                              
                    Foreground="White"
                    FontSize="25"
@@ -35,12 +62,12 @@
                    FontSize="25"
                    Name="username"
                    Text="user"/>
-            <TextBlock Grid.Column="1" Margin="192,161,174,290" Grid.Row="1"                              
+            <TextBlock Grid.Column="1" Margin="192,134,174,317" Grid.Row="1"                              
                    Foreground="White"
                    FontSize="25"
                    Name="price"
                    Text="price"/>
-            <TextBlock Grid.Column="1" Margin="0,286,0,10" Grid.Row="1"                              
+            <TextBlock Grid.Column="1" Margin="9,206,-9,90" Grid.Row="1"                              
                    Foreground="White"
                    FontSize="25"
                    Name="description"

@@ -17,4 +17,5 @@ private:
 	RequestResult getItems(RequestInfo requestInfo);
 	RequestResult getSpecItems(RequestInfo requestInfo);
 	RequestResult uploadItem(RequestInfo requestInfo);
+	RequestResult deleteItem(RequestInfo requestInfo);
 };

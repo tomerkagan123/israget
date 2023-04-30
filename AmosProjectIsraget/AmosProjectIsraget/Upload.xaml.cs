@@ -80,22 +80,22 @@ namespace AmosProjectIsraget
             item.description = description.Text;
             item.item_name = itemname.Text;
             item.user_name = Client.username;
-            if (item.description == string.Empty || item.description.Contains(';') || item.description.Contains(','))
+            if (item.description == string.Empty || item.description.Contains('#') || item.description.Contains('^') || item.description.Contains('~'))
             {
                 MessageBox.Show("Don't even try...");
                 return;
             }
-            if (item.email == string.Empty || item.email.Contains(';') || item.email.Contains(','))
+            if (item.email == string.Empty || item.email.Contains('#') || item.email.Contains('^') || item.email.Contains('~'))
             {
                 MessageBox.Show("Don't even try...");
                 return;
             }
-            if (item.item_name == string.Empty || item.item_name.Contains(';') || item.item_name.Contains(','))
+            if (item.item_name == string.Empty || item.item_name.Contains('#') || item.item_name.Contains('^') || item.item_name.Contains('~'))
             {
                 MessageBox.Show("Don't even try...");
                 return;
             }
-            if (item.user_name == string.Empty || item.user_name.Contains(';') || item.user_name.Contains(','))
+            if (item.user_name == string.Empty || item.user_name.Contains('#') || item.user_name.Contains('^') || item.user_name.Contains('~'))
             {
                 MessageBox.Show("Don't even try...");
                 return;

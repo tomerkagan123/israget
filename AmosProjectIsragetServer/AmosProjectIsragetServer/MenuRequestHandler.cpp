@@ -23,7 +23,7 @@ bool MenuRequestHandler::isRequestRelevant(RequestInfo requestInfo) const
 {
 	if (requestInfo.requestId == (int)'O' || requestInfo.requestId == (int)'R' || 
 		requestInfo.requestId == (int)'F' || requestInfo.requestId == (int)'C'
-		|| requestInfo.requestId == (int)'J' || requestInfo.requestId == (int)'T' || requestInfo.requestId == (int)'H')
+		|| requestInfo.requestId == (int)'J' || requestInfo.requestId == (int)'X' || requestInfo.requestId == (int)'H')
 	{
 		return true;
 	}
@@ -52,6 +52,10 @@ RequestResult MenuRequestHandler::handleRequest(RequestInfo requestInfo)
 	else if (requestInfo.requestId == (int)'C')
 	{
 		result = this->uploadItem(requestInfo);
+	}	
+	else if (requestInfo.requestId == (int)'X')
+	{
+		result = this->deleteItem(requestInfo);
 	}
 
 	return result;
@@ -86,10 +90,10 @@ RequestResult MenuRequestHandler::getItems(RequestInfo requestInfo)
 	int i = 0;
 	for (auto item : itlist)
 	{
-		result.response = result.response + ';' + item.user_name + ':' + item.item_name + ':' + item.description + ':' + item.price + ':' + item.email;
+		result.response = result.response + '#' + item.user_name + '^' + item.item_name + '^' + item.description + '^' + item.price + '^' + item.email;
 		if (i < itlist.size() - 1)
 		{
-			result.response = result.response + ',';
+			result.response = result.response + '~';
 		}
 		i++;
 	}
@@ -109,10 +113,10 @@ RequestResult MenuRequestHandler::getSpecItems(RequestInfo requestInfo)
 	int i = 0;
 	for (auto item : itlist)
 	{
-		result.response = result.response + ';' + item.user_name + ':' + item.item_name + ':' + item.description + ':' + item.price + ':' + item.email;
+		result.response = result.response + '#' + item.user_name + '^' + item.item_name + '^' + item.description + '^' + item.price + '^' + item.email;
 		if (i < itlist.size() - 1)
 		{
-			result.response = result.response + ',';
+			result.response = result.response + '~';
 		}
 		i++;
 	}
@@ -129,6 +133,19 @@ RequestResult MenuRequestHandler::uploadItem(RequestInfo requestInfo)
 	//std::list<Item> itlist = db.getItems(); Dont think im supposed to do checks here.
 	db.uploadItem(request.userName, request.itemName, request.description, request.price, request.email);
 	RequestResult result;
+	result.response = "Success!";
+	result.newHandler = this;
+	return result;
+}
+
+RequestResult MenuRequestHandler::deleteItem(RequestInfo requestInfo)
+{
+	RequestResult result;
+	SqliteDatabase db;
+	std::string stringBuffer(requestInfo.buffer.begin(), requestInfo.buffer.end()); //converts char buffer to std::string
+	JsonRequestPacketDeserializer jsonDeserialize;
+	DeleteItemRequest request = jsonDeserialize.deserializeDeleteItemRequest(stringBuffer);
+	db.deleteItem(request.userName, request.itemName, request.description);
 	result.response = "Success!";
 	result.newHandler = this;
 	return result;

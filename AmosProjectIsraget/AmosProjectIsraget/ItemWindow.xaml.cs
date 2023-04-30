@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Xml.Schema;
 
 namespace AmosProjectIsraget
 {
@@ -28,12 +29,26 @@ namespace AmosProjectIsraget
             LiveTime.Interval = TimeSpan.FromSeconds(1);
             LiveTime.Tick += timer_Tick;
             LiveTime.Start();
-            price.Text = item.price + '$';
+            price.Text = item.price;
             email.Text = item.email;
             description.Text = item.description;
             username.Text = item.user_name;
             itemname.Text = item.item_name;
+            if(username.Text == Client.username)
+            {
+                delete.Content = "Delete Item";
+                delete.Click += Delete;
+            }
 
+        }
+        private void Delete(object sender, RoutedEventArgs e)
+        {
+            string message = "{\"user_name\":\"" + Client.username + "\",\"item_name\":\"" + itemname.Text +"\",\"description\":\"" + description.Text;
+            message += "\"}";
+            string messageToSend = Client.BuildMessage(message, "X");
+            Client.SendMsgToServer(messageToSend);
+            MessageBox.Show("Successfully Deleted " + itemname.Text);
+            Browse(this, null);
         }
         void timer_Tick(object sender, EventArgs e)
         {

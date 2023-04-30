@@ -1,7 +1,4 @@
-﻿  MenuRequestHandler.cpp
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\MenuRequestHandler.cpp(37,32): warning C4101: 'jsonDeserialize': unreferenced local variable
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\MenuRequestHandler.cpp(64,32): warning C4101: 'jsonDeserialize': unreferenced local variable
-C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\AmosProjectIsragetServer\MenuRequestHandler.cpp(83,32): warning C4101: 'jsonDeserialize': unreferenced local variable
+﻿  main.cpp
   SqliteDatabase.cpp
   Generating Code...
   AmosProjectIsragetServer.vcxproj -> C:\Users\User\Desktop\GIT HERE\israget\AmosProjectIsragetServer\x64\Debug\AmosProjectIsragetServer.exe

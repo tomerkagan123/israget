@@ -35,6 +35,21 @@ namespace AmosProjectIsraget
         }
         private void SignupUser(object sender, RoutedEventArgs e)
         {
+            if(username.Text.Length > 10)
+            {
+                MessageBox.Show("Name too long...");
+                return;
+            }
+            if (password.Password.Length > 10)
+            {
+                MessageBox.Show("Password too long!");
+                return;
+            }
+            if (email.Text.Length > 20)
+            {
+                MessageBox.Show("Email too long.");
+                return;
+            }
             string user = username.Text;
             string pass = password.Password;
             string mail = email.Text;

@@ -71,6 +71,14 @@ void SqliteDatabase::uploadItem(std::string userName, std::string itemName, std:
 		std::cerr << "Error." << std::endl;
 }
 
+void SqliteDatabase::deleteItem(std::string userName, std::string itemName, std::string description)
+{
+	std::string sqlStatement = "DELETE FROM ITEMS WHERE user_name = '" + userName + "' AND item_name = '" + itemName + "' AND description = '" + description + "'; ";
+	int res = sqlite3_exec(this->m_db, sqlStatement.c_str(), nullptr, nullptr, nullptr);
+	if (res != SQLITE_OK)
+		std::cerr << "Error." << std::endl;
+}
+
 std::list<Item> SqliteDatabase::getItems()
 {
 	std::string sqlStatement = "SELECT * FROM ITEMS;";
