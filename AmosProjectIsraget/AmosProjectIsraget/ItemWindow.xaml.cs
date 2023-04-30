@@ -28,7 +28,7 @@ namespace AmosProjectIsraget
             LiveTime.Interval = TimeSpan.FromSeconds(1);
             LiveTime.Tick += timer_Tick;
             LiveTime.Start();
-            price.Text = item.price;
+            price.Text = item.price + '$';
             email.Text = item.email;
             description.Text = item.description;
             username.Text = item.user_name;

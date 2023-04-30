@@ -15,6 +15,6 @@ private:
 	RequestHandlerFactory* m_handlerFactory;
 	RequestResult signout(RequestInfo requestInfo);
 	RequestResult getItems(RequestInfo requestInfo);
-	RequestResult getItemInfo(RequestInfo requestInfo);
+	RequestResult getSpecItems(RequestInfo requestInfo);
 	RequestResult uploadItem(RequestInfo requestInfo);
 };

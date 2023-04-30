@@ -18,34 +18,34 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label Name="LiveTimeLabel" Content="00:00" Grid.Column="1" Margin="646,16,-112,3"
                    FontSize="15" FontWeight="Medium" Foreground="White" Height="56" Width="186"/>
-            <TextBlock Grid.Column="1" Margin="160,0,360,450" Grid.Row="1"                              
+            <TextBlock Grid.Column="1" Margin="25,5,398,445" Grid.Row="1"                              
                    Foreground="White"
-                   FontSize="40"
+                   FontSize="25"
                    Name="itemname"
                    Text="item"/>
-            <TextBlock Grid.Column="1" Margin="510,16,10,434" Grid.Row="1"                              
+            <TextBlock Grid.Column="1" Margin="406,10,34,440" Grid.Row="1"                              
                    Foreground="White"
                    FontSize="25"
                    Name="username"
                    Text="user"/>
-            <TextBlock Grid.Column="1" Margin="250,263,270,188" Grid.Row="1"                              
+            <TextBlock Grid.Column="1" Margin="192,161,174,290" Grid.Row="1"                              
                    Foreground="White"
-                   FontSize="50"
+                   FontSize="25"
                    Name="price"
                    Text="price"/>
-            <TextBlock Grid.Column="1" Margin="160,85,360,365" Grid.Row="1"                              
+            <TextBlock Grid.Column="1" Margin="0,286,0,10" Grid.Row="1"                              
                    Foreground="White"
                    FontSize="25"
                    Name="description"
                    Text="description"/>
-            <TextBlock Grid.Column="1" Margin="494,64,26,386" Grid.Row="1"                              
+            <TextBlock Grid.Column="1" Margin="406,64,10,364" Grid.Row="1"                              
                    Foreground="White"
                    FontSize="25"
                    Name="email"

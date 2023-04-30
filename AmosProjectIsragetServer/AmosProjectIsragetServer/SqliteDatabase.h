@@ -13,6 +13,7 @@ public:
 	void addNewUser(std::string name, std::string password, std::string email) override;
 	void uploadItem(std::string userName, std::string itemName, std::string description, std::string price, std::string email);
 	std::list<Item> getItems();
+	std::list<Item> getSpecItems(std::string name);
 	SqliteDatabase();
 	~SqliteDatabase();
 

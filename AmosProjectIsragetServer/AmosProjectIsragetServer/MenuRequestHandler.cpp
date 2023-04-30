@@ -22,7 +22,7 @@ MenuRequestHandler::MenuRequestHandler(LoggedUser user, RequestHandlerFactory* r
 bool MenuRequestHandler::isRequestRelevant(RequestInfo requestInfo) const
 {
 	if (requestInfo.requestId == (int)'O' || requestInfo.requestId == (int)'R' || 
-		requestInfo.requestId == (int)'P' || requestInfo.requestId == (int)'C'
+		requestInfo.requestId == (int)'F' || requestInfo.requestId == (int)'C'
 		|| requestInfo.requestId == (int)'J' || requestInfo.requestId == (int)'T' || requestInfo.requestId == (int)'H')
 	{
 		return true;
@@ -45,9 +45,9 @@ RequestResult MenuRequestHandler::handleRequest(RequestInfo requestInfo)
 	{
 		result = this->getItems(requestInfo);
 	}
-	else if (requestInfo.requestId == (int)'P')
+	else if (requestInfo.requestId == (int)'F')
 	{
-		result = this->getItemInfo(requestInfo);
+		result = this->getSpecItems(requestInfo);
 	}
 	else if (requestInfo.requestId == (int)'C')
 	{
@@ -97,9 +97,27 @@ RequestResult MenuRequestHandler::getItems(RequestInfo requestInfo)
 	return result;
 }
 
-RequestResult MenuRequestHandler::getItemInfo(RequestInfo requestInfo)
+RequestResult MenuRequestHandler::getSpecItems(RequestInfo requestInfo)
 {
-	return RequestResult();
+	RequestResult result;
+	SqliteDatabase db;
+	std::string stringBuffer(requestInfo.buffer.begin(), requestInfo.buffer.end()); //converts char buffer to std::string
+	JsonRequestPacketDeserializer jsonDeserialize;
+	GetSpecItemRequest request = jsonDeserialize.deserializeGetSpecItemRequest(stringBuffer);
+	std::list<Item> itlist = db.getSpecItems(request.name);
+	result.response = "Items";
+	int i = 0;
+	for (auto item : itlist)
+	{
+		result.response = result.response + ';' + item.user_name + ':' + item.item_name + ':' + item.description + ':' + item.price + ':' + item.email;
+		if (i < itlist.size() - 1)
+		{
+			result.response = result.response + ',';
+		}
+		i++;
+	}
+	result.newHandler = this;
+	return result;
 }
 
 RequestResult MenuRequestHandler::uploadItem(RequestInfo requestInfo)

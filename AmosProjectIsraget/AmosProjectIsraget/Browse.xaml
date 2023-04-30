@@ -99,11 +99,17 @@
                    Margin="20,0,0,0"/>
             <Label Name="LiveTimeLabel" Content="00:00" Grid.Column="1" Margin="646,16,-112,3"
                    FontSize="15" FontWeight="Medium" Foreground="White" Height="56" Width="186"/>
+            <TextBox Name="param" Grid.Column="1" Margin="495,34,25,416" Grid.Row="1"/>
+            <Button Name="search" Grid.Column="1" Margin="495,150,25,300" Grid.Row="1" Background="#0F0F2D"
+                    Foreground="White"
+                    FontSize="30"
+                    Content="search"
+                    Click="RefreshSpec"/>
             <StackPanel Name="itemtable" Grid.Row="1" Grid.ColumnSpan="2" Margin="250,0,250,0">
                 <ListBox x:Name="itembox" Height="437" Background="#181735"
                      BorderThickness="0"
                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                     ItemContainerStyle="{StaticResource ListBoxItemStyleTransparentSelect}" Width="482">
+                     ItemContainerStyle="{StaticResource ListBoxItemStyleTransparentSelect}" Width="420">
 
                 </ListBox>
             </StackPanel>

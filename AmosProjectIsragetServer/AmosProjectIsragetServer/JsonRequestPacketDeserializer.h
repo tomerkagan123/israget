@@ -18,12 +18,16 @@ struct UploadItemRequest {
 	std::string price;
 	std::string email;
 };
+struct GetSpecItemRequest {
+	std::string name;
+};
 class JsonRequestPacketDeserializer {
 public:
 	//v1.0.2
 	LoginRequest deserializeLoginRequest(std::string buffer);
 	SignUpRequest deserializeSignUpRequest(std::string buffer);
 	UploadItemRequest deserializeUploadItemRequest(std::string buffer);
+	GetSpecItemRequest deserializeGetSpecItemRequest(std::string buffer);
 	//v2.0.0
 	/*GetPlayersInRoomRequest deserializeGetPlayersInRoomRequest(std::string buffer);
 	CreateRoomRequest deserializeCreateRoomRequest(std::string buffer);

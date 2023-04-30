@@ -25,7 +25,7 @@ namespace AmosProjectIsraget
         private Dictionary<int, string> allItems = new Dictionary<int, string>();
         DispatcherTimer timer = new DispatcherTimer();
         DispatcherTimer LiveTime = new DispatcherTimer();
-
+        bool first = false;
         public Browse()
         {
             InitializeComponent();
@@ -59,12 +59,6 @@ namespace AmosProjectIsraget
         private void CloseProgram(object sender, RoutedEventArgs e)
         {
             Client.SendMsgToServer("D");
-            LiveTime.Stop();
-            LiveTime.Tick -= timer_Tick;
-            timer.Stop();
-            timer.Tick -= timer1_Tick;
-            LiveTime = null;
-            timer = null;
             Client.socket.Close();
             System.Environment.Exit(0);
         }
@@ -72,10 +66,13 @@ namespace AmosProjectIsraget
         {
             LiveTime.Stop();
             LiveTime.Tick -= timer_Tick;
-            timer.Stop();
-            timer.Tick -= timer1_Tick;
+            if (!first)
+            {
+                timer.Stop();
+                timer.Tick -= timer1_Tick;
+                timer = null;
+            }
             LiveTime = null;
-            timer = null;
             Menu win = new Menu();
             win.Top = this.Top;
             win.Left = this.Left;
@@ -87,10 +84,13 @@ namespace AmosProjectIsraget
         {
             LiveTime.Stop();
             LiveTime.Tick -= timer_Tick;
-            timer.Stop();
-            timer.Tick -= timer1_Tick;
+            if (!first)
+            {
+                timer.Stop();
+                timer.Tick -= timer1_Tick;
+                timer = null;
+            }
             LiveTime = null;
-            timer = null;
             Upload win = new Upload();
             win.Top = this.Top;
             win.Left = this.Left;
@@ -102,6 +102,55 @@ namespace AmosProjectIsraget
         {
             itembox.Items.Clear();
             string messageToSend = Client.BuildMessage(" ", "R");
+            Client.SendMsgToServer(messageToSend);
+            string recv = Client.ReceiveMsgFromServer();
+            char ch = ';';
+            int freq = recv.Count(x => (x == ch));
+            recv = recv.Replace("Items;", String.Empty).Replace(";", String.Empty);
+            String[] arrItems = recv.Split(',');
+            String[][] arrItemsarr = new string[freq][];
+            Client.arrayOfItemsArray = new Item[freq];
+            //MessageBox.Show(recv);
+            for (int i = 0; i < freq; i++)
+            {
+                Item item = new Item();
+                arrItemsarr[i] = arrItems[i].Split(':');
+                item.user_name = arrItemsarr[i][0];
+                item.item_name = arrItemsarr[i][1];
+                item.description = arrItemsarr[i][2];
+                item.price = arrItemsarr[i][3];
+                item.email = arrItemsarr[i][4];
+                Client.arrayOfItemsArray[i] = item;
+            }
+            for (int i = 0; i < freq; i++)
+            {
+                Button button = new Button();
+                button.Content = Client.arrayOfItemsArray[i].item_name;
+                button.Click += ButtonClick;
+                button.Height = 100;
+                button.Width = 469;
+                button.BorderThickness = new Thickness(0, 0, 0, 0); ;
+                button.Background = new SolidColorBrush(Color.FromRgb(15, 15, 45));
+                button.FontSize = 50;
+                button.FontFamily = new FontFamily("Fonts/#Dosis");
+                button.Foreground = new SolidColorBrush(Colors.White);
+                Style style = this.FindResource("MyButton") as Style;
+                button.Style = style;
+                itembox.Items.Add(button);
+            }
+        }
+        private void RefreshSpec(object sender, RoutedEventArgs e)
+        {
+            if(!first)
+            {
+                timer.Stop();
+                timer.Tick -= timer1_Tick;
+                timer = null;
+                first = true;
+            }
+            itembox.Items.Clear();
+            string message = "{\"name\":\"%" + param.Text + "%\"}";
+            string messageToSend = Client.BuildMessage(message, "F");
             Client.SendMsgToServer(messageToSend);
             string recv = Client.ReceiveMsgFromServer();
             char ch = ';';
@@ -153,10 +202,13 @@ namespace AmosProjectIsraget
             }
             LiveTime.Stop();
             LiveTime.Tick -= timer_Tick;
-            timer.Stop();
-            timer.Tick -= timer1_Tick;
+            if (!first)
+            {
+                timer.Stop();
+                timer.Tick -= timer1_Tick;
+                timer = null;
+            }
             LiveTime = null;
-            timer = null;
             ItemWindow window = new ItemWindow(currItem);
             window.Top = this.Top;
             window.Left = this.Left;

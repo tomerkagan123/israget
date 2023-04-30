@@ -80,6 +80,16 @@ std::list<Item> SqliteDatabase::getItems()
 		std::cerr << "Error." << std::endl;
 	return list;
 }
+std::list<Item> SqliteDatabase::getSpecItems(std::string name)
+{
+	std::cout << name << std::endl;
+	std::string sqlStatement = "SELECT * FROM ITEMS WHERE item_name LIKE '" + name + "'; ";
+	std::list<Item> list;
+	int res = sqlite3_exec(this->m_db, sqlStatement.c_str(), callbackGetItems, &list, nullptr);
+	if (res != SQLITE_OK)
+		std::cerr << "Error." << std::endl;
+	return list;
+}
 
 /*
 * Constructor
